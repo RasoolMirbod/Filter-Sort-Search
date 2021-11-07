@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React, { Component, useRef, useState } from "react";
+import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import ProductList from "./components/ProductList/ProductList";
+import Wrapper from "./components/hoc/Wrapper";
+import Filter from "./components/Filter/Filter";
+import ProductsProvider from "./components/Provider/ProductsProvider";
+import SearchBar from "./common/Search/Search";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <ProductsProvider>
+        <NavBar />
 
-export default App;
+        <Filter />
+        <ProductList />
+      </ProductsProvider>
+    </>
+  );
+};
+
+export default Wrapper(App, "container");
